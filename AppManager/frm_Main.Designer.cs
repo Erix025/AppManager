@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Main));
             this.lst_Apps = new System.Windows.Forms.ListBox();
             this.gb_ControlBox = new System.Windows.Forms.GroupBox();
             this.but_OpenApp = new System.Windows.Forms.Button();
@@ -112,6 +113,7 @@
             this.Controls.Add(this.gb_ControlBox);
             this.Controls.Add(this.lst_Apps);
             this.Font = new System.Drawing.Font("宋体", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frm_Main";
