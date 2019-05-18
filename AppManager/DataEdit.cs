@@ -7,7 +7,7 @@ namespace AppManager
         public static List<App> ReadApps(string path)
         {
             var result = new List<App>();
-            var input = ReadFiles.ItemRead(path);
+            var input = ReadFiles.ItemRead(path,ReadFiles.ReadMode.SafeRead);
             string[] keys = input.Item2;
             string[] values = input.Item3;
             int i = 0;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using AppManager.Properties;
 namespace AppManager
 {
     public partial class frm_Main : Form
@@ -16,9 +17,9 @@ namespace AppManager
             apps = DataEdit.ReadApps(datapath);
             ReFresh();
         }
-        private void Frm_Main_Resize(object sender, EventArgs e)
+        private void Frm_Main_Resize(object sender, EventArgs e)    //调整空间位置
         {
-            lst_Apps.Height = Height - 75;
+            lst_Apps.Height = Height - 100;
             gb_ControlBox.Height = lst_Apps.Height;
             Width = 378;
         }

@@ -35,6 +35,7 @@
             this.but_EditApp = new System.Windows.Forms.Button();
             this.but_DeleteApp = new System.Windows.Forms.Button();
             this.but_AddApp = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gb_ControlBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             // 
             this.lst_Apps.FormattingEnabled = true;
             this.lst_Apps.ItemHeight = 16;
-            this.lst_Apps.Location = new System.Drawing.Point(13, 13);
+            this.lst_Apps.Location = new System.Drawing.Point(12, 45);
             this.lst_Apps.Margin = new System.Windows.Forms.Padding(4);
             this.lst_Apps.Name = "lst_Apps";
             this.lst_Apps.Size = new System.Drawing.Size(191, 452);
@@ -55,7 +56,7 @@
             this.gb_ControlBox.Controls.Add(this.but_EditApp);
             this.gb_ControlBox.Controls.Add(this.but_DeleteApp);
             this.gb_ControlBox.Controls.Add(this.but_AddApp);
-            this.gb_ControlBox.Location = new System.Drawing.Point(211, 13);
+            this.gb_ControlBox.Location = new System.Drawing.Point(210, 45);
             this.gb_ControlBox.Name = "gb_ControlBox";
             this.gb_ControlBox.Size = new System.Drawing.Size(139, 452);
             this.gb_ControlBox.TabIndex = 1;
@@ -105,11 +106,19 @@
             this.but_AddApp.UseVisualStyleBackColor = true;
             this.but_AddApp.Click += new System.EventHandler(this.But_AddApp_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(317, 26);
+            this.textBox1.TabIndex = 2;
+            // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 487);
+            this.ClientSize = new System.Drawing.Size(362, 539);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gb_ControlBox);
             this.Controls.Add(this.lst_Apps);
             this.Font = new System.Drawing.Font("宋体", 12F);
@@ -122,6 +131,7 @@
             this.Resize += new System.EventHandler(this.Frm_Main_Resize);
             this.gb_ControlBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,6 +143,7 @@
         private System.Windows.Forms.Button but_EditApp;
         private System.Windows.Forms.Button but_DeleteApp;
         private System.Windows.Forms.Button but_AddApp;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
