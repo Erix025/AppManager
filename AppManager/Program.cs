@@ -16,7 +16,16 @@ namespace AppManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_Main());
+            var mutex = new System.Threading.Mutex(true, "AppManager");
+            if (mutex.WaitOne(0, false))
+            {
+                Application.Run(new frm_Main());
+            }
+            else
+            {
+                MessageBox.Show("AppManager已运行！");
+                Application.Exit();
+            }
         }
     }
 }

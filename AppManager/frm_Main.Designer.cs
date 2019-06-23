@@ -35,7 +35,7 @@
             this.but_EditApp = new System.Windows.Forms.Button();
             this.but_DeleteApp = new System.Windows.Forms.Button();
             this.but_AddApp = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_Search = new System.Windows.Forms.TextBox();
             this.gb_ControlBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,19 +106,20 @@
             this.but_AddApp.UseVisualStyleBackColor = true;
             this.but_AddApp.Click += new System.EventHandler(this.But_AddApp_Click);
             // 
-            // textBox1
+            // txt_Search
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 26);
-            this.textBox1.TabIndex = 2;
+            this.txt_Search.Location = new System.Drawing.Point(12, 12);
+            this.txt_Search.Name = "txt_Search";
+            this.txt_Search.Size = new System.Drawing.Size(317, 26);
+            this.txt_Search.TabIndex = 2;
+            this.txt_Search.TextChanged += new System.EventHandler(this.Txt_Search_TextChanged);
             // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 539);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_Search);
             this.Controls.Add(this.gb_ControlBox);
             this.Controls.Add(this.lst_Apps);
             this.Font = new System.Drawing.Font("宋体", 12F);
@@ -143,7 +144,7 @@
         private System.Windows.Forms.Button but_EditApp;
         private System.Windows.Forms.Button but_DeleteApp;
         private System.Windows.Forms.Button but_AddApp;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_Search;
     }
 }
 
