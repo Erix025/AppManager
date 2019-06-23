@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 namespace AppManager
 {
-    public class App
+    public class App : IComparable<App>
     {
         public string Name { get; set; } 
         public string Path { get; set; }
@@ -18,6 +18,14 @@ namespace AppManager
         public void Open()
         {
             Process.Start(Path);
+        }
+        public int CompareTo(App app)
+        {
+            if (app != null)
+            {
+                return Name.CompareTo(app.Name);
+            }
+            throw new NotImplementedException();
         }
     }
 }

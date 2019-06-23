@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 namespace AppManager
 {
     public partial class frm_Main : Form
@@ -14,11 +15,12 @@ namespace AppManager
         private void Frm_Main_Load(object sender, EventArgs e)
         {
             apps = DataEdit.ReadApps(datapath);
+            apps.Sort();
             ReFresh();
         }
-        private void Frm_Main_Resize(object sender, EventArgs e)
+        private void Frm_Main_Resize(object sender, EventArgs e)    //调整空间位置
         {
-            lst_Apps.Height = Height - 75;
+            lst_Apps.Height = Height - 100;
             gb_ControlBox.Height = lst_Apps.Height;
             Width = 378;
         }
@@ -27,7 +29,7 @@ namespace AppManager
         {
             try
             {
-                apps[lst_Apps.SelectedIndex].Open();
+                apps.Find(app => app.Name == lst_Apps.SelectedItem.ToString()).Open();
             }
             catch
             {
@@ -45,12 +47,19 @@ namespace AppManager
                 DataEdit.WriteApps(apps, datapath); //保存
                 CommunicateValue.changed_app = null;  //重置
                 ReFresh();
+                apps.Sort();
             }
         }
         private void ReFresh()
         {
+            txt_Search.Text = "";
+            ReFresh("");//回调重载，刷新界面
+        }
+        private void ReFresh(string str)
+        {
             lst_Apps.Items.Clear();
-            foreach (App app in apps)
+            List<App> tem = apps.FindAll(app => app.Name.IndexOf(txt_Search.Text,StringComparison.OrdinalIgnoreCase) >= 0);
+            foreach (App app in tem)
             {
                 lst_Apps.Items.Add(app.Name);
             }
@@ -58,14 +67,14 @@ namespace AppManager
             but_DeleteApp.Enabled = false;
             but_EditApp.Enabled = false;
         }
-
         private void But_DeleteApp_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("是否删除应用" + lst_Apps.SelectedItem.ToString(), "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                apps.RemoveAt(lst_Apps.SelectedIndex);
+                apps.Remove(apps.Find(app => app.Name == lst_Apps.SelectedItem.ToString()));
                 DataEdit.WriteApps(apps, datapath); //保存
                 ReFresh();
+                apps.Sort();
             }
         }
 
@@ -81,7 +90,7 @@ namespace AppManager
 
         private void But_EditApp_Click(object sender, EventArgs e)
         {
-            int index = lst_Apps.SelectedIndex;
+            int index = apps.FindIndex(app => app.Name == lst_Apps.SelectedItem.ToString());
             frm_Edit frm_Edit = new frm_Edit(apps[index]);
             frm_Edit.ShowDialog();
             if (CommunicateValue.changed_app != null)
@@ -91,7 +100,12 @@ namespace AppManager
                 DataEdit.WriteApps(apps, datapath);
                 CommunicateValue.changed_app = null;
                 ReFresh();
+                apps.Sort();
             }
+        }
+        private void Txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            ReFresh(txt_Search.Text);
         }
     }
 }

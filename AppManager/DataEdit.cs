@@ -4,10 +4,10 @@ namespace AppManager
 {
     class DataEdit
     {
-        public static List<App> ReadApps(string path)
+        public static List<App> ReadApps(string path)   //读取Applist
         {
             var result = new List<App>();
-            var input = ReadFiles.ItemRead(path);
+            var input = ReadFiles.ItemRead(path,ReadFiles.ReadMode.SafeRead);
             string[] keys = input.Item2;
             string[] values = input.Item3;
             int i = 0;
@@ -27,7 +27,7 @@ namespace AppManager
             }
             return result;
         }
-        public static void WriteApps(List<App> apps, string path)
+        public static void WriteApps(List<App> apps, string path)   //写入Applist
         {
             string[] result = new string[apps.Count * 3];
             int i = 0;
