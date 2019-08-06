@@ -10,6 +10,7 @@ namespace AppManager
     {
         public string Name { get; set; } 
         public string Path { get; set; }
+        public App(){}
         public App(string name, string path)
         {
             Name = name;
