@@ -1,4 +1,4 @@
-﻿using DataEdit;
+﻿using Index.DataEdit;
 using System.Collections.Generic;
 namespace AppManager
 {
@@ -7,23 +7,23 @@ namespace AppManager
         public static List<App> ReadApps(string path)   //读取Applist
         {
             var result = new List<App>();
-            var input = ReadFiles.ItemRead(path,ReadFiles.ReadMode.SafeRead);
-            string[] keys = input.Item2;
-            string[] values = input.Item3;
-            int i = 0;
-            string name = "";
-            foreach (string key in keys)
+            var input = ReadFiles.ItemRead(path,true);
+            foreach (var items in input)
             {
-                switch (key)
+                var app = new App();
+                foreach (var item in items)
                 {
-                    case "name":
-                        name = values[i];
-                        break;
-                    case "path":
-                        result.Add(new App(name, values[i]));
-                        break;
+                    switch (item.Key)
+                    {
+                        case "name":
+                            app.Name = item.Value;
+                            break;
+                        case "path":
+                            app.Path = item.Value;
+                            break;
+                    }
                 }
-                i++;
+                result.Add(app);
             }
             return result;
         }
